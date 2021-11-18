@@ -42,7 +42,9 @@
             <div class="col-md-8">
               <div class="card-body">
                 <h5 class="card-title display-2" th:text="${book.name}">Name</h5>
-                <p class="card-text display-6" th:text="${book.authorNames}">Author name</p>
+                <div th:each="index: ${#numbers.sequence( 0, #arrays.length(book.authorNames)-1)}">
+                  <a class="card-text display-5" th:href="@{'/authors/' + ${book.authorNames[index]}}" th:text="${book.authorNames[index]}">Author name</a>
+                </div>
                 <p class="card-text" th:text="${book.description}">Book description</p>
                 <p class="card-text">Published Date: <small class="text-muted" th:text="${book.publishedDate}">2020-01-01</small></p>
                 
